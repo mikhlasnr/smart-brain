@@ -31,8 +31,9 @@ class SignIn extends Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
-        }
-      });
+        } else alert(user);
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
