@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { API_URL } from "../../db";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class Register extends Component {
   };
 
   onSubmitRegister = e => {
-    fetch("http://localhost:3000/register", {
+    fetch(`${API_URL}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

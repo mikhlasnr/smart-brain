@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { API_URL } from "./db";
 import Navigation from "./components/Navigation/Navigation";
 import "./App.css";
 import Logo from "./components/Logo/Logo";
 import ImageLinkFrom from "./components/ImageLinkFrom/ImageLinkFrom";
 import Rank from "./components/Rank/Rank";
 import Particles from "react-particles-js";
-import Clarifai from "clarifai";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
@@ -41,6 +41,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
+  }
+
+  componentDidMount() {
+    fetch(`${API_URL}`).then(response => response.json().then(console.log));
   }
 
   loadUser = data => {
@@ -80,7 +84,7 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch("http://localhost:3000/imageurl", {
+    fetch(`${API_URL}/imageurl`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -90,7 +94,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         // Fetch to server
-        fetch("http://localhost:3000/image", {
+        fetch(`${API_URL}/image`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
