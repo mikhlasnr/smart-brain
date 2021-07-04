@@ -43,10 +43,6 @@ class App extends Component {
     this.state = initialState;
   }
 
-  componentDidMount() {
-    fetch(`${API_URL}`).then(response => response.json().then(console.log));
-  }
-
   loadUser = data => {
     this.setState({
       user: {

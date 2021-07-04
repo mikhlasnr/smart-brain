@@ -1,1 +1,4 @@
-export const API_URL = "https://nomad-smart-brain-api.herokuapp.com";
+const isOnDevlop = true;
+export const API_URL = isOnDevlop
+  ? "http://localhost:3000/"
+  : "https://nomad-smart-brain-api.herokuapp.com";
